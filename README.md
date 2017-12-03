@@ -5,7 +5,51 @@ patchless is a _standard_ for modular ui apps.
 It's primarily intended for secure scuttlebutt,
 but not actually directly coupled to ssb.
 
-## layout
+## installation
+
+clone this repo, npm install, and then run `electro index.js`
+(you won't see much ;) then edit index.js, comment out different
+modules and see that it still works.
+
+## goals
+
+This repo will not become a fully fledged, shiny, ssb app.
+It will be a rough developer toolkit. I aim for this to be the
+easiest way to create a customized patchapp, or insert a new
+feature into any application derived from patchless!
+
+There will be very little code in this repo, mainly it will become
+documentation for patchless interfaces.
+
+## TODO
+
+* write up interfaces as precisely as possible.
+* design compose interface?
+* message extras interfaces?
+* support multiple identities early,
+  to make sure they get in on the ground floor.
+
+## Interfaces
+
+### layout
+
+```
+layout: {
+  gives: {
+    screen (): returns root layout html element,
+      supporting hypertabs focus|blur events on change,
+      and hyperloadmore hasmore|readymore events on scroll.
+    goto (path): move the view to another app
+  },
+  needs: {
+    app: {
+      view (path): from app, loads a feed or document view
+      menu (): from app, returns path that view(path) will render a view.
+        the layout should present this to the user in some way so that they can navigate to it.
+  }
+}
+
+```
 
 layout manages navigation between screens.
 one layout system might use forward/back navigation
@@ -33,7 +77,17 @@ with the same apps.
 gives: layout.screen, layout.goto
 needs: app.view (first), app.menu (map)
 
-## app.view (string path) => HtmlElement
+### app
+
+```
+app: {
+  gives: {
+    view (path): returns html element.
+      if this view is a feed/index it should interact with hasmore|readymore events.
+    menu (): returns the paths this app needs statically.
+  }
+}
+```
 
 A view is a part of an application that is open at one time.
 
@@ -44,9 +98,9 @@ A string is used so that it's easy to keep a map of the currently open views,
 and also so that a link to a view can be represented as a href.
 If to express an location as an object, it can be encoded as a query string.
 
-gives: app.view
+there are 3 ways I can think of that a view might be used.
 
-### feed
+#### app.view: feed
 
 A feed is a view which is a continious list of objects,
 for example new messages, private messages, search results,
@@ -58,7 +112,7 @@ A feed is likely to have an infinite scroll bar.
 A feed that does not need arguments should also give a menuItem so that
 the layout can provide navigation to the view.
 
-### document / thread
+#### app.view: document / thread
 
 A thread is the simplest example of a document view. This
 shows messages related to a single message. for example,
@@ -74,13 +128,13 @@ the feed.
 
 gives: view (id) => element
 
-### state
+#### app.view: state
 
 The third sort of screen is just about local application state
 that is not represented as messages or feeds. for example, local
 peers, gossip state, etc.
 
-## components
+### components
 
 Then there are other miscelanious components that make up an application.
 
@@ -96,3 +150,9 @@ gives:
 ### others?
 
 compose and confirm? identity (for switch identies?)
+
+
+
+
+
+

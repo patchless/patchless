@@ -13,6 +13,7 @@
     "hyperscript": "^2.0.2",
     "patchavatar-raw": "^1.0.0",
     "patchnav": "^1.0.1",
+    "patchnavless": "^1.0.0",
     "patchtabs": "^1.0.0",
     "patchthreads": "^1.0.0",
     "pull-more": "^1.0.0",

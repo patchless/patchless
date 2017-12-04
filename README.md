@@ -151,8 +151,7 @@ gives:
 
 compose and confirm? identity (for switch identies?)
 
+### License
 
-
-
-
+MIT
 

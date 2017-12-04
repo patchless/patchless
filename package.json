@@ -8,12 +8,29 @@
     "url": "git://github.com/dominictarr/patchless.git"
   },
   "dependencies": {
+    "depject": "^4.1.1",
+    "hyperloadmore": "^1.1.0",
+    "hyperscript": "^2.0.2",
+    "patchavatar-raw": "^1.0.0",
+    "patchnav": "^1.0.1",
+    "patchtabs": "^1.0.0",
+    "patchthreads": "^1.0.0",
+    "pull-more": "^1.0.0",
+    "pull-reconnect": "0.0.3",
+    "pull-scroll": "^1.0.9",
+    "pull-stream": "^3.6.1",
+    "ssb-client": "^4.5.2",
+    "ssb-config": "^2.2.0",
+    "ssb-keys": "^7.0.13",
+    "ssb-markdown": "^3.3.0",
+    "ssb-ref": "^2.8.0",
+    "visualize-buffer": "0.0.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
+    "start": "electro index.js",
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
-  "license": "MIT"  
+  "license": "MIT"
 }

@@ -31,10 +31,10 @@ documentation for patchless interfaces.
 
 ## Interfaces
 
-### layout
+### nav
 
 ```
-layout: {
+nav: {
   gives: {
     screen (): returns root layout html element,
       supporting hypertabs focus|blur events on change,
@@ -51,13 +51,13 @@ layout: {
 
 ```
 
-layout manages navigation between screens.
-one layout system might use forward/back navigation
-another layout system could be tabs.
-it should be fully possible to switch between different layouts.
-The role of the layout module is quite similar to a window manager.
+`nav` manages navigation between screens.
+[patchnav-basic](https://github.com/dominictarr/patchnav-basic) system might use forward/back navigation
+[patchnav-tabs](https://github.com/dominictarr/patchnav-tabs) system uses tabs.
+You can switch between these two and everything else still works.
+The role of the nav module is quite similar to a window manager.
 
-The layout needs a list of top level views (feeds) which can be navigated to
+The `nav` needs a list of top level views (feeds) which can be navigated to
 or displayed by default. to navigate to a document view, follow a link from a top level feed.
 
 The layout also manages navigation to links. There are two ways that links are handled,
@@ -66,7 +66,7 @@ bubbles up to window.onclick) or a click handler on an element calls goto(href, 
 (opts can be provided to open externally, as a new tab, or as the layouts default mode,
 and wether to focus to the opened element)
 
-A layout is also responsible for managing scrolling.
+the `nav` interface is also responsible for managing scrolling.
 currently, patchless uses `hyperloadmore` for scrolling.
 This gives the choice of either infinite scrolling, or
 "load more" buttons. Also, this moves the complicated part
@@ -74,7 +74,7 @@ into the layout, and apps just need to handle 'hasmore'
 and 'readymore' events, this makes it easy to switch layouts
 with the same apps.
 
-gives: layout.screen, layout.goto
+gives: nav.screen, nav.goto
 needs: app.view (first), app.menu (map)
 
 ### app
@@ -154,4 +154,5 @@ compose and confirm? identity (for switch identies?)
 ### License
 
 MIT
+
 

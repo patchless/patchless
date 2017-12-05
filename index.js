@@ -2,9 +2,9 @@
 require('depject')([
   //choose which layout you like, these all work
 
-//  require('patchnavless'),
-//  require('patchnav'),
-  require('patchtabs'),
+//  require('patchnav-less'),
+//  require('patchnav-basic'),
+  require('patchnav-tabs'),
 
   //TEMP, MOVE ALL MODULES TO NPM
   require('./modules/sbot'),
@@ -21,9 +21,9 @@ require('depject')([
   //call the layout and add to the DOM.
   {
     gives: {},
-    needs: { layout: {screen: 'first' }},
+    needs: { nav: {screen: 'first' }},
     create: function (api) {
-      document.body.appendChild(api.layout.screen())
+      document.body.appendChild(api.nav.screen())
       var style = document.createElement('style')
       style.textContent = require('fs').readFileSync(
         require('path').join(__dirname, 'style.css')

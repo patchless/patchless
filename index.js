@@ -9,13 +9,18 @@ require('depject')([
   //TEMP, MOVE ALL MODULES TO NPM
   require('./modules/sbot'),
   require('./modules/public'),
+  require('./modules/uxer'),
   require('./modules/private'),
   require('./modules/raw'),
+
+  //load and manage identities
+  require('patchidentity'),
 
   //renders message threads
   require('patchthreads'),
 
   //provides avatars, but doesn't actually do names.
+  require('patchavatar-names'),
   require('patchavatar-raw'),
 
   //call the layout and add to the DOM.
@@ -33,9 +38,3 @@ require('depject')([
     }
   }
 ])
-
-
-
-
-
-

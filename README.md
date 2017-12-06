@@ -11,6 +11,8 @@ clone this repo, npm install, and then run `electro index.js`
 (you won't see much ;) then edit index.js, comment out different
 modules and see that it still works.
 
+you'll also need to be running `ssb-names` plugin on your sbot.
+
 ## goals
 
 This repo will not become a fully fledged, shiny, ssb app.

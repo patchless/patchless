@@ -26,6 +26,7 @@ var keys = config.keys = ssbKeys.loadOrCreateSync(path.join(config.path, 'secret
 //  })
 //}
 //
+
 //uncomment this to use from browser...
 //also depends on having ssb-ws installed.
 //var createClient = require('ssb-lite')
@@ -43,9 +44,20 @@ module.exports = {
     sbot: {
       get: true,
       createLogStream: true,
+      createUserStream: true,
       links: true,
       progress: true,
-      status: true
+      status: true,
+
+      friends: {
+        get: true
+      },
+
+      names: {
+        get: true,
+        getSignifier: true,
+        getSignifies: true
+      }
     }
   },
 
@@ -56,7 +68,7 @@ module.exports = {
     var sbot = null
     var connection_status = []
 
-    var rec = { 
+    var rec = {
       sync: function () {},
       async: function () {},
       source: function () {},
@@ -96,6 +108,14 @@ module.exports = {
             })
           )
         }),
+        createUserStream: rec.source(function (opts) {
+          return pull(
+            sbot.createUserStream(opts),
+            pull.through(function (e) {
+              CACHE[e.key] = CACHE[e.key] || e.value
+            })
+          )
+        }),
         links: rec.source(function (opts) {
           return sbot.links(opts)
         }),
@@ -113,7 +133,23 @@ module.exports = {
         }),
         status: rec.async(function (cb) {
           sbot.status(cb)
-        })
+        }),
+        friends: {
+          get: rec.async(function (opts, cb) {
+            sbot.friends.get(opts, cb)
+          })
+        },
+        names: {
+          get: rec.async(function (opts, cb) {
+            sbot.names.get(opts, cb)
+          }),
+          getSignifier: rec.async(function (opts, cb) {
+            sbot.names.getSignifier(opts, cb)
+          }),
+          getSignifies: rec.async(function (opts, cb) {
+            sbot.names.getSignifies(opts, cb)
+          })
+        }
       }
     }
   }

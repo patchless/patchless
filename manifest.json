@@ -84,6 +84,12 @@
     "_dump": "source",
     "request": "sync"
   },
+  "names": {
+    "get": "async",
+    "getSignifier": "async",
+    "getSignifies": "async",
+    "dump": "sync"
+  },
   "private": {
     "publish": "async",
     "unbox": "sync",

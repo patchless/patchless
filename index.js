@@ -1,30 +1,39 @@
 
 require('depject')([
+//NOTE: there is a bug in depject...
+//it should be possible to have this last... but it seems to fail unless it's first.
+//load a whole "app" at a time this way. it's also possible to customize this app
+//by disabling parts of it.. say how the threads are rolled up or not...
+require('patchapp-threads'),
+
+//there is a weird bug here, where the level of nesting effects the load order.
+{rawMessages: require('./modules/raw')},
+
+{
   //choose which layout you like, these all work
 
 //  require('patchnav-less'),
 //  require('patchnav-basic'),
-  require('patchnav-tabs'),
+tabs:  require('patchnav-tabs'),
 
-  //TEMP, MOVE ALL MODULES TO NPM
-  require('./modules/sbot'),
-  require('./modules/public'),
-  require('./modules/uxer'),
-  require('./modules/private'),
-  require('./modules/raw'),
+//TEMP, MOVE ALL MODULES TO NPM
+sbot:  require('./modules/sbot'),
 
   //load and manage identities
-  require('patchidentity'),
+id:  require('patchidentity'),
+//}, {
+  //text inputs
+compose:  require('patchcompose'),
 
-  //renders message threads
-  require('patchthreads'),
-
+names:  require('patchavatar-names'),
   //provides avatars, but doesn't actually do names.
-  require('patchavatar-names'),
-  require('patchavatar-raw'),
+avatarRaw:  require('patchavatar-raw'),
 
-  //call the layout and add to the DOM.
-  {
+  //confirm after posting a message
+confirm:  require('patchconfirm-lightbox'),
+},
+{
+app:  {
     gives: {},
     needs: { nav: {screen: 'first' }},
     create: function (api) {
@@ -37,4 +46,24 @@ require('depject')([
       return function () {}
     }
   }
+}
 ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

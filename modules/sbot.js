@@ -42,7 +42,9 @@ module.exports = {
 //  },
   gives: {
     sbot: {
+      add: true,
       get: true,
+      getLatest: true,
       createLogStream: true,
       createUserStream: true,
       links: true,
@@ -119,6 +121,11 @@ module.exports = {
         links: rec.source(function (opts) {
           return sbot.links(opts)
         }),
+        add: rec.async(function (msg, cb) {
+          if('function' !== typeof cb)
+            throw new Error('cb must be function')
+          sbot.add(msg, cb)
+        }),
         get: rec.async(function (key, cb) {
           if('function' !== typeof cb)
             throw new Error('cb must be function')
@@ -127,6 +134,9 @@ module.exports = {
             if(err) return cb(err)
             cb(null, CACHE[key] = value)
           })
+        }),
+        getLatest: rec.async(function (id, cb) {
+          sbot.getLatest(id, cb)
         }),
         progress: rec.async(function (cb) {
           sbot.progress(cb)
@@ -154,4 +164,6 @@ module.exports = {
     }
   }
 }
+
+
 

@@ -1,9 +1,63 @@
 
 .markdown img {
-  width: 100%
+  max-width: 100%;
 }
 
 .hyperscroll > * {
   max-width: 700px;
   margin: auto;
 }
+
+.lightbox {
+  position: absolute;
+  display: flex
+}
+
+.Avatar {
+  display: flex;
+  flex-direction: column;
+}
+
+.side {
+  min-width: 100px;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: solid 1px #eee;
+}
+
+.content {
+  background: #f4f4f4;
+  font-size: 14pt;
+}
+
+.markdown {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%
+  }
+
+  .Avatar img {
+    margin: 3px;
+  }
+
+  .Avatar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .message {
+    flex-direction: column;
+  }
+}
+

@@ -84,12 +84,13 @@ module.exports = {
 
       createClient(keys, {
         manifest: require('../manifest.json'),
-//        remote: require('../config')().remote,
+        remote: localStorage.remote,
         caps: config.caps
       }, function (err, _sbot) {
-        if(err)
+        if(err) {
+          console.log(err.stack)
           return notify(err)
-
+        }
         sbot = _sbot
         sbot.on('closed', function () {
           sbot = null
@@ -164,6 +165,4 @@ module.exports = {
     }
   }
 }
-
-
 

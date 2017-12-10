@@ -33,7 +33,14 @@
     "ssb-ref": "^2.8.0",
     "visualize-buffer": "0.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "brfs": "^1.4.3"
+  },
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
+  },
   "scripts": {
     "start": "electro index.js",
     "test": "set -e; for t in test/*.js; do node $t; done"

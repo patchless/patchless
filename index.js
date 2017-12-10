@@ -1,3 +1,5 @@
+var fs = require('fs')
+var path = require('path')
 
 require('depject')([
 //NOTE: there is a bug in depject...
@@ -12,9 +14,9 @@ require('patchapp-threads'),
 {
   //choose which layout you like, these all work
 
-//  require('patchnav-less'),
+//  nav: require('patchnav-less'),
 //  require('patchnav-basic'),
-tabs:  require('patchnav-tabs'),
+  nav:  require('patchnav-tabs'),
 
 //TEMP, MOVE ALL MODULES TO NPM
 sbot:  require('./modules/sbot'),
@@ -31,6 +33,7 @@ avatarRaw:  require('patchavatar-raw'),
 
   //confirm after posting a message
 confirm:  require('patchconfirm-lightbox'),
+suggest: require('patchsuggest'),
 },
 {
 app:  {
@@ -39,15 +42,15 @@ app:  {
     create: function (api) {
       document.body.appendChild(api.nav.screen())
       var style = document.createElement('style')
-      style.textContent = require('fs').readFileSync(
-        require('path').join(__dirname, 'style.css')
-      )
+      style.textContent = fs.readFileSync(path.join(__dirname, 'style.css'))
       document.body.appendChild(style)
       return function () {}
     }
   }
 }
 ])
+
+
 
 
 

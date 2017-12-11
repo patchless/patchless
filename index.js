@@ -47,26 +47,8 @@ app:  {
       return function () {}
     }
   }
-}
+},
+require('./modules/vote')
 ])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

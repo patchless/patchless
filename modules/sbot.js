@@ -59,6 +59,11 @@ module.exports = {
         get: true,
         getSignifier: true,
         getSignifies: true
+      },
+      blobs: {
+        get: true,
+        add: true,
+        push: true
       }
     }
   },
@@ -159,6 +164,17 @@ module.exports = {
           }),
           getSignifies: rec.async(function (opts, cb) {
             sbot.names.getSignifies(opts, cb)
+          })
+        },
+        blobs: {
+          add: rec.sink(function (opts, cb) {
+            return sbot.blobs.add(opts, cb)
+          }),
+          get: rec.source(function (opts) {
+            return sbot.blobs.get(opts)
+          }),
+          push: rec.async(function (hash, cb) {
+            sbot.blobs.push(hash, cb)
           })
         }
       }

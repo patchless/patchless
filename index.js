@@ -49,7 +49,8 @@ app:  {
   }
 },
 require('./modules/vote'),
-require('patchcompose-drafts')
+require('patchcompose-drafts'),
+require('patchcompose-file')
 ])
 
 

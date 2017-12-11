@@ -48,7 +48,8 @@ app:  {
     }
   }
 },
-require('./modules/vote')
+require('./modules/vote'),
+require('patchcompose-drafts')
 ])
 
 

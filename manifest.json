@@ -86,6 +86,8 @@
   },
   "names": {
     "get": "async",
+    "getImages": "async",
+    "getImageFor": "async",
     "getSignifier": "async",
     "getSignifies": "async",
     "dump": "sync"

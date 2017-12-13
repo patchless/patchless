@@ -18,6 +18,10 @@
   flex-direction: column;
 }
 
+.Avatar img {
+  width: 50px;
+}
+
 .side {
   min-width: 100px;
 }

@@ -12,7 +12,7 @@
     "hyperlightbox": "^1.0.0",
     "hyperloadmore": "^1.1.0",
     "hyperscript": "^2.0.2",
-    "patchapp-threads": "^2.0.1",
+    "patchapp-threads": "^2.1.0",
     "patchavatar-names": "^1.0.0",
     "patchavatar-raw": "^1.0.0",
     "patchcompose": "^1.0.0",
@@ -23,6 +23,7 @@
     "patchnav-basic": "^2.0.0",
     "patchnav-less": "^2.0.0",
     "patchnav-tabs": "^2.0.0",
+    "patchsuggest": "^1.0.0",
     "patchthreads": "^1.0.0",
     "pull-more": "^1.0.0",
     "pull-reconnect": "0.0.3",
@@ -50,5 +51,3 @@
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "MIT"
 }
-
-

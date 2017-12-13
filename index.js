@@ -50,7 +50,8 @@ app:  {
 },
 require('./modules/vote'),
 require('patchcompose-drafts'),
-require('patchcompose-file')
+require('patchcompose-file'),
+require('./modules/copy-id')
 ])
 
 

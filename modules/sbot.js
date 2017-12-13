@@ -57,6 +57,8 @@ module.exports = {
 
       names: {
         get: true,
+        getImages: true,
+        getImageFor: true,
         getSignifier: true,
         getSignifies: true
       },
@@ -159,6 +161,12 @@ module.exports = {
           get: rec.async(function (opts, cb) {
             sbot.names.get(opts, cb)
           }),
+          getImages: rec.async(function (opts, cb) {
+            sbot.names.getImages(opts, cb)
+          }),
+          getImageFor: rec.async(function (opts, cb) {
+            sbot.names.getImageFor(opts, cb)
+          }),
           getSignifier: rec.async(function (opts, cb) {
             sbot.names.getSignifier(opts, cb)
           }),
@@ -181,4 +189,7 @@ module.exports = {
     }
   }
 }
+
+
+
 

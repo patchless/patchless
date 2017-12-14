@@ -18,6 +18,7 @@
     "patchcompose": "^1.0.0",
     "patchcompose-drafts": "^1.0.0",
     "patchcompose-file": "^1.0.0",
+    "patchcompose-legacy-mentions": "^1.0.0",
     "patchconfirm-lightbox": "^1.0.0",
     "patchidentity": "^1.2.1",
     "patchnav-basic": "^2.0.0",
@@ -51,3 +52,4 @@
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "MIT"
 }
+

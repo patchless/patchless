@@ -49,9 +49,14 @@ app:  {
   }
 },
 require('./modules/vote'),
+//add drafts (stored in localStorage to all composers)
 require('patchcompose-drafts'),
+//add file uploads to composer
 require('patchcompose-file'),
+//support old style mentions, so that patchwork users get notifications on mentions
+require('patchcompose-legacy-mentions'),
 require('./modules/copy-id')
 ])
+
 
 

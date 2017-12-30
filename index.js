@@ -1,7 +1,11 @@
 var fs = require('fs')
 var path = require('path')
 
+if('undefined' === typeof setImmediate)
+  setImmediate = setTimeout
+
 require('depject')([
+//require('patchapp-rollup'),
 //NOTE: there is a bug in depject...
 //it should be possible to have this last... but it seems to fail unless it's first.
 //load a whole "app" at a time this way. it's also possible to customize this app
@@ -15,19 +19,20 @@ require('patchapp-threads'),
   //choose which layout you like, these all work
 
 //  nav: require('patchnav-less'),
-//  require('patchnav-basic'),
+//  nav: require('patchnav-basic'),
   nav:  require('patchnav-tabs'),
 
 //TEMP, MOVE ALL MODULES TO NPM
 sbot:  require('./modules/sbot'),
 
   //load and manage identities
-id:  require('patchidentity'),
+  id:  require('patchidentity'),
 //}, {
   //text inputs
 compose:  require('patchcompose'),
 
 names:  require('patchavatar-names'),
+avatarViews:  require('patchavatar-names/view'),
   //provides avatars, but doesn't actually do names.
 avatarRaw:  require('patchavatar-raw'),
 
@@ -48,15 +53,15 @@ app:  {
     }
   }
 },
-require('./modules/vote'),
+require('patchapp-vote'),
 //add drafts (stored in localStorage to all composers)
 require('patchcompose-drafts'),
 //add file uploads to composer
 require('patchcompose-file'),
 //support old style mentions, so that patchwork users get notifications on mentions
 require('patchcompose-legacy-mentions'),
+require('patchcompose-recipients'),
 require('./modules/copy-id')
 ])
-
 
 

@@ -21,9 +21,9 @@
     "patchcompose-legacy-mentions": "^1.0.0",
     "patchconfirm-lightbox": "^1.0.0",
     "patchidentity": "^1.2.1",
-    "patchnav-basic": "^2.0.0",
-    "patchnav-less": "^2.0.0",
-    "patchnav-tabs": "^2.0.0",
+    "patchnav-basic": "^2.0.2",
+    "patchnav-less": "^2.0.2",
+    "patchnav-tabs": "^2.0.1",
     "patchsuggest": "^1.0.0",
     "patchthreads": "^1.0.0",
     "pull-more": "^1.0.0",
@@ -45,6 +45,9 @@
       "brfs"
     ]
   },
+  "browser": {
+    "electron": false
+  },
   "scripts": {
     "start": "electro index.js",
     "test": "set -e; for t in test/*.js; do node $t; done"
@@ -52,3 +55,5 @@
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "MIT"
 }
+
+

@@ -65,3 +65,22 @@
   }
 }
 
+.MessageMeta>a, .Message__actions>a, .Avatar__actions>a {
+  background: lightgrey;
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+  margin-left: 3px;
+  border-radius: 3px;
+}
+.MessageMeta>a:hover, .Message__actions>a:hover, .Avatar__actions>a:hover {
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+

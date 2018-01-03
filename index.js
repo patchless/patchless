@@ -21,6 +21,7 @@ require('patchapp-threads'),
 //  nav: require('patchnav-less'),
 //  nav: require('patchnav-basic'),
   nav:  require('patchnav-tabs'),
+//  nav:  require('../patchnav-command'),
 
 //TEMP, MOVE ALL MODULES TO NPM
 sbot:  require('./modules/sbot'),
@@ -61,7 +62,9 @@ require('patchcompose-file'),
 //support old style mentions, so that patchwork users get notifications on mentions
 require('patchcompose-legacy-mentions'),
 require('patchcompose-recipients'),
-require('./modules/copy-id')
+require('./modules/copy-id'),
+require('patchsuggest-fulltext')
 ])
+
 
 

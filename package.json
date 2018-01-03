@@ -16,7 +16,7 @@
     "patchapp-vote": "^1.0.3",
     "patchavatar-names": "^1.0.0",
     "patchavatar-raw": "^1.0.0",
-    "patchcompose": "^1.0.0",
+    "patchcompose": "^2.0.0",
     "patchcompose-drafts": "^1.0.0",
     "patchcompose-file": "^1.0.0",
     "patchcompose-legacy-mentions": "^1.0.0",
@@ -26,7 +26,8 @@
     "patchnav-basic": "^2.0.2",
     "patchnav-less": "^2.0.2",
     "patchnav-tabs": "^2.0.1",
-    "patchsuggest": "^1.0.0",
+    "patchsuggest": "^2.0.0",
+    "patchsuggest-fulltext": "^1.0.0",
     "patchthreads": "^1.0.0",
     "pull-more": "^1.0.0",
     "pull-reconnect": "0.0.3",
@@ -58,3 +59,4 @@
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "MIT"
 }
+

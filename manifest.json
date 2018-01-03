@@ -111,5 +111,8 @@
   "ooo": {
     "stream": "duplex",
     "get": "async"
+  },
+  "fulltext": {
+    "search": "source"
   }
 }

@@ -66,6 +66,9 @@ module.exports = {
         get: true,
         add: true,
         push: true
+      },
+      fulltext: {
+        search: true
       }
     }
   },
@@ -183,6 +186,11 @@ module.exports = {
           }),
           push: rec.async(function (hash, cb) {
             sbot.blobs.push(hash, cb)
+          })
+        },
+        fulltext: {
+          search: rec.source(function (opts) {
+            return sbot.fulltext.search(opts)
           })
         }
       }

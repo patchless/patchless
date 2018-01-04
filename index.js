@@ -21,7 +21,7 @@ require('patchapp-threads'),
 //  nav: require('patchnav-less'),
 //  nav: require('patchnav-basic'),
   nav:  require('patchnav-tabs'),
-//  nav:  require('../patchnav-command'),
+//  nav:  require('patchnav-command'),
 
 //TEMP, MOVE ALL MODULES TO NPM
 sbot:  require('./modules/sbot'),

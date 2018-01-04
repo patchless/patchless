@@ -24,6 +24,7 @@
     "patchconfirm-lightbox": "^1.0.0",
     "patchidentity": "^1.2.1",
     "patchnav-basic": "^2.0.2",
+    "patchnav-command": "^1.0.0",
     "patchnav-less": "^2.0.2",
     "patchnav-tabs": "^2.0.1",
     "patchsuggest": "^2.0.0",
@@ -41,7 +42,9 @@
     "visualize-buffer": "0.0.1"
   },
   "devDependencies": {
-    "brfs": "^1.4.3"
+    "brfs": "^1.4.3",
+    "browserify": "^14.5.0",
+    "electron": "^1.7.10"
   },
   "browserify": {
     "transform": [

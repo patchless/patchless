@@ -44,6 +44,7 @@
   "devDependencies": {
     "brfs": "^1.4.3",
     "browserify": "^14.5.0",
+    "electro": "^2.1.0",
     "electron": "^1.7.10"
   },
   "browserify": {

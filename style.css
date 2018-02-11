@@ -1,4 +1,8 @@
 
+* {
+  word-break: break-word;
+}
+
 .markdown img {
   max-width: 100%;
 }
@@ -20,10 +24,11 @@
 
 .Avatar img {
   width: 50px;
+  height: 50px;
 }
 
 .side {
-  min-width: 100px;
+  width: 100px;
 }
 
 .message {
@@ -32,6 +37,30 @@
   padding-top: 20px;
   margin-top: 20px;
   border-top: solid 1px #eee;
+}
+
+.MessageMeta {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.message__wrapper {
+  width: 100%;
+}
+
+.MessageMeta .Avatar {
+  display: flex;
+  flex-direction: row;
+}
+
+.MessageMeta .Avatar img {
+  width: 32px; height: 32px;
+}
+
+.message_wrapper {
+  width: 100%;
+  width: 600px;
 }
 
 .content {
@@ -76,6 +105,11 @@
 .MessageMeta>a:hover, .Message__actions>a:hover, .Avatar__actions>a:hover {
   border: 1px solid black;
 }
+
+
+
+
+
 
 
 

@@ -62,9 +62,12 @@ require('patchcompose-file'),
 //support old style mentions, so that patchwork users get notifications on mentions
 require('patchcompose-legacy-mentions'),
 require('patchcompose-recipients'),
+require('patchcompose-mentioned-recipients'),
 require('./modules/copy-id'),
-require('patchsuggest-fulltext')
+require('patchsuggest-fulltext'),
+require('patchmisc-recipients')
 ])
+
 
 
 

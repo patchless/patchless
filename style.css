@@ -3,6 +3,10 @@
   word-break: break-word;
 }
 
+.selected {
+  background: red;
+}
+
 .markdown img {
   max-width: 100%;
 }

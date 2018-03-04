@@ -5,6 +5,7 @@ if('undefined' === typeof setImmediate)
   setImmediate = setTimeout
 
 require('depject')([
+require('./modules/search'),
 //require('patchapp-rollup'),
 //NOTE: there is a bug in depject...
 //it should be possible to have this last... but it seems to fail unless it's first.
@@ -13,7 +14,7 @@ require('depject')([
 require('patchapp-threads'),
 
 //there is a weird bug here, where the level of nesting effects the load order.
-{rawMessages: require('./modules/raw')},
+require('patchapp-raw'),
 
 {
   //choose which layout you like, these all work
@@ -64,10 +65,11 @@ require('patchcompose-legacy-mentions'),
 require('patchcompose-recipients'),
 require('patchcompose-mentioned-recipients'),
 require('./modules/copy-id'),
+
+//adds search
 require('patchsuggest-fulltext'),
+
+//shows recipients in private messages
 require('patchmisc-recipients')
 ])
-
-
-
 

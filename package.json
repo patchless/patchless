@@ -12,7 +12,8 @@
     "hyperlightbox": "^1.0.0",
     "hyperloadmore": "^1.1.0",
     "hyperscript": "^2.0.2",
-    "patchapp-threads": "^2.1.0",
+    "patchapp-raw": "^1.0.0",
+    "patchapp-threads": "^3.0.0",
     "patchapp-vote": "^1.0.3",
     "patchavatar-names": "^2.0.0",
     "patchavatar-raw": "^2.0.0",
@@ -24,14 +25,13 @@
     "patchcompose-recipients": "^1.0.0",
     "patchconfirm-lightbox": "^1.0.0",
     "patchidentity": "^1.2.1",
-    "patchmisc-recipients": "^1.2.3",
+    "patchmisc-recipients": "^2.0.0",
     "patchnav-basic": "^2.0.2",
     "patchnav-command": "^1.0.0",
     "patchnav-less": "^2.0.2",
     "patchnav-tabs": "^2.0.1",
     "patchsuggest": "^2.0.0",
     "patchsuggest-fulltext": "^2.0.2",
-    "patchthreads": "^3.0.0",
     "pull-more": "^1.0.0",
     "pull-reconnect": "0.0.3",
     "pull-scroll": "^1.0.9",
@@ -65,4 +65,3 @@
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
   "license": "MIT"
 }
-

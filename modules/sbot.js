@@ -6,7 +6,7 @@ var path = require('path')
 var config = require('ssb-config/inject')(process.env.ssb_appname)
 
 var ssbKeys = require('ssb-keys')
-var config = require('ssb-config')
+
 var path = require('path')
 var keys = config.keys = ssbKeys.loadOrCreateSync(path.join(config.path, 'secret'))
 
@@ -32,7 +32,7 @@ var keys = config.keys = ssbKeys.loadOrCreateSync(path.join(config.path, 'secret
 //var createClient = require('ssb-lite')
 var createClient = require('ssb-client')
 
-var createConfig = require('ssb-config/inject')
+//var createConfig = require('ssb-config/inject')
 
 var cache = CACHE = {}
 
@@ -67,8 +67,14 @@ module.exports = {
         add: true,
         push: true
       },
-      fulltext: {
-        search: true
+      search: {
+        query: true
+      },
+      private: {
+        read: true
+      },
+      query: {
+        read: true
       }
     }
   },
@@ -76,7 +82,7 @@ module.exports = {
 //module.exports = {
   create: function (api) {
 
-    var opts = createConfig()
+    var opts = config
     var sbot = null
     var connection_status = []
 
@@ -92,11 +98,17 @@ module.exports = {
         //api.connection_status(value) //.forEach(function (fn) { fn(value) })
       }
 
-      createClient(keys, {
+      console.log('CONFIG', config)
+
+      config.manifest = require('../manifest.json')
+
+      createClient(keys, config/*{
         manifest: require('../manifest.json'),
         remote: localStorage.remote,
-        caps: config.caps
-      }, function (err, _sbot) {
+        caps: config.caps,
+        
+        host: config.host, port: config.post, key: config.keys.id
+      }*/, function (err, _sbot) {
         if(err) {
           console.log(err.stack)
           return notify(err)
@@ -110,6 +122,16 @@ module.exports = {
         notify()
       })
     })
+
+    //poll the sbot every 10 seconds, to ensure connection is maintained
+    ;(function loop (err) {
+      if(err) console.error(err)
+      setTimeout(function () {
+        sbot.whoami(loop)
+      }, 10e3)
+    })()
+
+    var images = {}, names = {}
 
     return {
       sbot: {
@@ -168,7 +190,13 @@ module.exports = {
             sbot.names.getImages(opts, cb)
           }),
           getImageFor: rec.async(function (opts, cb) {
-            sbot.names.getImageFor(opts, cb)
+//            return sbot.names.getImageFor(opts, cb)
+            if(images[opts]) cb(null, images[opts])
+            else
+              sbot.names.getImageFor(opts, function (err, v) {
+                if(err) cb(err)
+                else cb(null, images[opts]= v)
+              })
           }),
           getSignifier: rec.async(function (opts, cb) {
             sbot.names.getSignifier(opts, cb)
@@ -188,16 +216,25 @@ module.exports = {
             sbot.blobs.push(hash, cb)
           })
         },
-        fulltext: {
-          search: rec.source(function (opts) {
-            return sbot.fulltext.search(opts)
+        search: {
+          query: rec.source(function (opts) {
+            return sbot.search.query(opts)
           })
-        }
+        },
+        private: {
+          read: rec.source(function (opts) {
+            return sbot.private.read(opts)
+          })
+        },
+        query: {
+          read: rec.source(function (opts) {
+            return sbot.query.read(opts)
+          })
+        },
+
       }
     }
   }
 }
-
-
 
 

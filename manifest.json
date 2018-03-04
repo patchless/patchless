@@ -51,6 +51,10 @@
     "stream": "source",
     "hops": "async"
   },
+  "ebt": {
+    "replicate": "duplex",
+    "request": "sync"
+  },
   "blobs": {
     "get": "source",
     "getSlice": "source",
@@ -78,11 +82,6 @@
   },
   "ws": {
     "getAddress": "sync"
-  },
-  "ebt": {
-    "replicate": "duplex",
-    "_dump": "source",
-    "request": "sync"
   },
   "names": {
     "get": "async",
@@ -112,7 +111,9 @@
     "stream": "duplex",
     "get": "async"
   },
-  "fulltext": {
-    "search": "source"
+  "proc": {},
+  "muxrpcperf": {},
+  "search": {
+    "query": "source"
   }
 }

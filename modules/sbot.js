@@ -101,14 +101,9 @@ module.exports = {
       console.log('CONFIG', config)
 
       config.manifest = require('../manifest.json')
+      config.remote = localStorage.remote
 
-      createClient(keys, config/*{
-        manifest: require('../manifest.json'),
-        remote: localStorage.remote,
-        caps: config.caps,
-        
-        host: config.host, port: config.post, key: config.keys.id
-      }*/, function (err, _sbot) {
+      createClient(keys, config, function (err, _sbot) {
         if(err) {
           console.log(err.stack)
           return notify(err)

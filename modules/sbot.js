@@ -127,7 +127,7 @@ module.exports = {
     ;(function loop (err) {
       if(err) console.error(err)
       setTimeout(function () {
-        sbot.whoami(loop)
+        if(sbot) sbot.whoami(loop)
       }, 10e3)
     })()
 

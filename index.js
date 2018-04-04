@@ -42,8 +42,12 @@ avatarRaw:  require('patchavatar-raw'),
 confirm:  require('patchconfirm-lightbox'),
 suggest: require('patchsuggest'),
 },
+//this doesn't load if it's after APP but does if it's here
+//if it's after app is still works, but only if it's separate
+//this seems like a bug in depject!
+require('patchcompose-drafts'),
 {
-app:  {
+  app: {
     gives: {},
     needs: { nav: {screen: 'first' }},
     create: function (api) {
@@ -57,7 +61,6 @@ app:  {
 },
 require('patchapp-vote'),
 //add drafts (stored in localStorage to all composers)
-require('patchcompose-drafts'),
 //add file uploads to composer
 require('patchcompose-file'),
 //support old style mentions, so that patchwork users get notifications on mentions
@@ -72,4 +75,11 @@ require('patchsuggest-fulltext'),
 //shows recipients in private messages
 require('patchmisc-recipients')
 ])
+
+
+
+
+
+
+
 

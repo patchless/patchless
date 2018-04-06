@@ -110,15 +110,10 @@
   border: 1px solid black;
 }
 
-
-
-
-
-
-
-
-
-
-
+.Hypertabs .tab > .link {
+  overflow: hidden;
+  text-overflow: fade;
+  word-break: normal;
+}
 
 

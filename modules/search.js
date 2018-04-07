@@ -17,7 +17,7 @@ exports.create = function (api) {
   //should be somewhere else...
 
   return { app: { viewMenu: function (src) {
-    var input = h('input')
+    var input = h('input.patchless__modules__search')
     var wrapped = h('span', input)
 
     SuggestBox(input, function (word, cb) {
@@ -29,7 +29,7 @@ exports.create = function (api) {
     input.onkeydown = function (ev) {
 
       if(ev.keyCode !== 13) return
-      if(api.nav.goto(input.value))
+      if(api.nav.goto(input.value.trim()))
         input.value = ''
     }
 

@@ -116,4 +116,6 @@
   word-break: normal;
 }
 
-
+.emoji {
+  width: 20px;
+}

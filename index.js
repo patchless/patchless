@@ -34,7 +34,8 @@ sbot:  require('./modules/sbot'),
 compose:  require('patchcompose'),
 
 names:  require('patchavatar-names'),
-avatarViews:  require('patchavatar-names/view'),
+friends: require('patchapp-friends'),
+//avatarViews:  require('patchavatar-names/view'),
   //provides avatars, but doesn't actually do names.
 avatarRaw:  require('patchavatar-raw'),
 
@@ -75,11 +76,4 @@ require('patchsuggest-fulltext'),
 //shows recipients in private messages
 require('patchmisc-recipients')
 ])
-
-
-
-
-
-
-
 

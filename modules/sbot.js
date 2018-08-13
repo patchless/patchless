@@ -75,6 +75,12 @@ module.exports = {
       },
       query: {
         read: true
+      },
+      identities: {
+        main: true,
+        list: true,
+        create: true,
+        publishAs: true
       }
     }
   },
@@ -97,8 +103,6 @@ module.exports = {
         isConn(value);
         //api.connection_status(value) //.forEach(function (fn) { fn(value) })
       }
-
-      console.log('CONFIG', config)
 
       config.manifest = require('../manifest.json')
       config.remote = localStorage.remote
@@ -157,7 +161,7 @@ module.exports = {
         get: rec.async(function (key, cb) {
           if('function' !== typeof cb)
             throw new Error('cb must be function')
-          if(CACHE[key]) cb(null, CACHE[key])
+          if(false && CACHE[key]) cb(null, CACHE[key])
           else sbot.get(key, function (err, value) {
             if(err) return cb(err)
             cb(null, CACHE[key] = value)
@@ -223,13 +227,27 @@ module.exports = {
         },
         query: {
           read: rec.source(function (opts) {
+            console.log("QUERY", opts)
             return sbot.query.read(opts)
           })
         },
+        identities: {
+          main: rec.async(function (cb) {
+            sbot.identities.main(cb)
+          }),
+          list: rec.async(function (cb) {
+            sbot.identities.list(cb)
+          }),
+          publishAs: rec.async(function (opts, cb) {
+            sbot.identities.publishAs(opts, cb)
+          }),
+          create: rec.async(function (cb) {
+            sbot.identities.create(cb)
+          })
+        }
 
       }
     }
   }
 }
-
 

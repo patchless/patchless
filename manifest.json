@@ -8,6 +8,7 @@
   "messagesByType": "source",
   "createHistoryStream": "source",
   "createUserStream": "source",
+  "createWriteStream": "sink",
   "links": "source",
   "relatedMessages": "async",
   "add": "async",
@@ -51,10 +52,6 @@
     "stream": "source",
     "hops": "async"
   },
-  "ebt": {
-    "replicate": "duplex",
-    "request": "sync"
-  },
   "blobs": {
     "get": "source",
     "getSlice": "source",
@@ -75,13 +72,19 @@
     "use": "async"
   },
   "query": {
-    "read": "source"
+    "read": "source",
+    "explain": "sync"
   },
   "links2": {
     "read": "source"
   },
   "ws": {
     "getAddress": "sync"
+  },
+  "ebt": {
+    "replicate": "duplex",
+    "request": "sync",
+    "peerStatus": "sync"
   },
   "names": {
     "get": "async",
@@ -107,13 +110,13 @@
     "stream": "source",
     "get": "async"
   },
-  "ooo": {
-    "stream": "duplex",
-    "get": "async"
-  },
-  "proc": {},
-  "muxrpcperf": {},
   "search": {
     "query": "source"
+  },
+  "identities": {
+    "main": "sync",
+    "list": "async",
+    "create": "async",
+    "publishAs": "async"
   }
 }

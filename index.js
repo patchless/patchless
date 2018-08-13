@@ -74,6 +74,7 @@ require('./modules/copy-id'),
 require('patchsuggest-fulltext'),
 
 //shows recipients in private messages
-require('patchmisc-recipients')
+require('patchmisc-recipients'),
+require('../patchapp-identities')
 ])
 

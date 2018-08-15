@@ -9,39 +9,21 @@ var ssbKeys = require('ssb-keys')
 
 var path = require('path')
 var keys = config.keys = ssbKeys.loadOrCreateSync(path.join(config.path, 'secret'))
+config.manifest = require(path.join(config.path, 'manifest.json'))
 
-//
-//function Hash (onHash) {
-//  var buffers = []
-//  return pull.through(function (data) {
-//    buffers.push('string' === typeof data
-//      ? new Buffer(data, 'utf8')
-//      : data
-//    )
-//  }, function (err) {
-//    if(err && !onHash) throw err
-//    var b = buffers.length > 1 ? Buffer.concat(buffers) : buffers[0]
-//    var h = '&'+ssbKeys.hash(b)
-//    onHash && onHash(err, h)
-//  })
-//}
-//
 
 //uncomment this to use from browser...
 //also depends on having ssb-ws installed.
 //var createClient = require('ssb-lite')
 var createClient = require('ssb-client')
 
-//var createConfig = require('ssb-config/inject')
-
 var cache = CACHE = {}
 
 module.exports = {
-//  needs: {
-//    connection_status: 'map'
-//  },
   gives: {
     sbot: {
+      onClient: true,
+
       add: true,
       get: true,
       getLatest: true,
@@ -79,13 +61,12 @@ module.exports = {
     }
   },
 
-//module.exports = {
   create: function (api) {
 
     var opts = config
     var sbot = null
     var connection_status = []
-
+    var waiting = []
     var rec = {
       sync: function () {},
       async: function () {},
@@ -95,12 +76,8 @@ module.exports = {
     var rec = Reconnect(function (isConn) {
       function notify (value) {
         isConn(value);
-        //api.connection_status(value) //.forEach(function (fn) { fn(value) })
       }
 
-      console.log('CONFIG', config)
-
-      config.manifest = require('../manifest.json')
       config.remote = localStorage.remote
 
       createClient(keys, config, function (err, _sbot) {
@@ -109,6 +86,8 @@ module.exports = {
           return notify(err)
         }
         sbot = _sbot
+        while(waiting.length && sbot)
+          waiting.shift()(sbot)
         sbot.on('closed', function () {
           sbot = null
           notify(new Error('closed'))
@@ -122,7 +101,11 @@ module.exports = {
     ;(function loop (err) {
       if(err) console.error(err)
       setTimeout(function () {
-        if(sbot) sbot.whoami(loop)
+        var start = Date.now()
+        if(sbot) sbot.whoami(function (err) {
+          if(err) console.log('disconnect')
+          else console.log('connected', Date.now()-start)
+        })
       }, 10e3)
     })()
 
@@ -130,6 +113,10 @@ module.exports = {
 
     return {
       sbot: {
+        onClient: function (fn) {
+          if(sbot) fn(sbot)
+          else waiting.push(fn)
+        },
         createLogStream: rec.source(function (opts) {
           return pull(
             sbot.createLogStream(opts),
@@ -185,7 +172,6 @@ module.exports = {
             sbot.names.getImages(opts, cb)
           }),
           getImageFor: rec.async(function (opts, cb) {
-//            return sbot.names.getImageFor(opts, cb)
             if(images[opts]) cb(null, images[opts])
             else
               sbot.names.getImageFor(opts, function (err, v) {
@@ -231,5 +217,6 @@ module.exports = {
     }
   }
 }
+
 
 

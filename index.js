@@ -47,6 +47,9 @@ suggest: require('patchsuggest'),
 //if it's after app is still works, but only if it's separate
 //this seems like a bug in depject!
 require('patchcompose-drafts'),
+
+require('patch-chess'),
+
 {
   app: {
     gives: {},

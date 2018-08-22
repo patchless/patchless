@@ -38,13 +38,14 @@
     "pull-stream": "^3.6.1",
     "ssb-client": "^4.5.7",
     "ssb-config": "^2.2.0",
-    "ssb-keys": "^7.0.13"
+    "ssb-keys": "^7.0.13",
+    "suggest-box": "^2.2.3"
   },
   "devDependencies": {
     "brfs": "^1.4.3",
     "browserify": "^14.5.0",
-    "electro": "^2.1.0",
-    "electron": "^1.7.10"
+    "electro": "^2.1.1",
+    "electron": "^2.0.7"
   },
   "browserify": {
     "transform": [

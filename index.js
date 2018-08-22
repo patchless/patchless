@@ -48,7 +48,7 @@ suggest: require('patchsuggest'),
 //this seems like a bug in depject!
 require('patchcompose-drafts'),
 
-require('patch-chess'),
+require('patchapp-chess'),
 
 {
   app: {
